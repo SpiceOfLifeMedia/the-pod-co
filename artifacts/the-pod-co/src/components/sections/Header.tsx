@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import logoColor from "@assets/podco-logo-color.png";
 
 export function Header() {
   return (
@@ -6,7 +7,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <img 
-            src="/podco-logo-color.png" 
+            src={logoColor}
             alt="The POD Co." 
             className="h-8"
           />

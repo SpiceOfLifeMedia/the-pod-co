@@ -1,3 +1,5 @@
+import logoWhite from "@assets/podco-logo-white.png";
+
 export function Footer() {
   return (
     <footer className="bg-[#0A0C10] text-gray-400 py-20 border-t border-white/10">
@@ -5,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16">
           <div className="col-span-2 md:col-span-1">
             <img 
-              src="/podco-logo-white.png" 
+              src={logoWhite}
               alt="The POD Co." 
               className="h-8 mb-6 opacity-90"
             />
