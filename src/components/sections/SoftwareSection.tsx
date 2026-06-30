@@ -1,4 +1,5 @@
 import { useIntersectionObserver } from "@/lib/use-intersection-observer";
+import logoTns from "@assets/podco-logo-tns.png";
 
 function AppMockup() {
   const projects = [
@@ -32,15 +33,9 @@ function AppMockup() {
         {/* Sidebar */}
         <div className="w-[140px] bg-[#0D0F13] border-r border-white/5 p-3 shrink-0">
           <div className="flex items-center gap-1.5 mb-5 px-1">
-            <div className="w-4 h-4 border border-white/30 rounded-sm flex items-center justify-center">
-              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                <rect x="1" y="1" width="2.5" height="2.5" fill="white" opacity="0.8"/>
-                <rect x="4.5" y="1" width="2.5" height="2.5" fill="white" opacity="0.8"/>
-                <rect x="1" y="4.5" width="2.5" height="2.5" fill="white" opacity="0.8"/>
-                <rect x="4.5" y="4.5" width="2.5" height="2.5" fill="white" opacity="0.3"/>
-              </svg>
+            <div className="flex items-center justify-center">
+              <img src={logoTns} alt="The POD Co." style={{ height: "14px", filter: "brightness(0) invert(1)" }} />
             </div>
-            <span className="text-white text-[10px] font-semibold">PODsentral</span>
           </div>
           {["Dashboard", "Projects", "Recordings", "AI Enhance", "Publishing", "Calendar", "Analytics", "Settings"].map((item, i) => (
             <div
