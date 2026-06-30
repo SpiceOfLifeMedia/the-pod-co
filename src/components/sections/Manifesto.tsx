@@ -4,18 +4,24 @@ export function Manifesto() {
   const [ref, isVisible] = useIntersectionObserver();
 
   return (
-    <section className="py-40 md:py-56 bg-white">
-      <div className="max-w-5xl mx-auto px-6 text-center">
+    <section className="bg-[#0D0F13] py-20 md:py-28 border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6">
         <div
           ref={ref as any}
-          className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
+          className={`fade-in-section ${isVisible ? "is-visible" : ""} flex flex-col md:flex-row md:items-center gap-10 md:gap-20`}
         >
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-[#111118] leading-[1.06]">
-            Everyone has a voice<br /> worth hearing.
-          </h2>
-          <p className="mt-10 text-xl md:text-2xl text-[#696E7C] font-light max-w-2xl mx-auto leading-relaxed">
-            We build the world's simplest spoken-content ecosystem —<br className="hidden md:block" /> removing every barrier between people and their voice.
-          </p>
+          {/* Left: big quote */}
+          <div className="flex-[3]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white tracking-tight leading-[1.1]">
+              Everyone has a voice worth hearing.
+            </h2>
+          </div>
+          {/* Right: body */}
+          <div className="flex-[2]">
+            <p className="text-[#696E7C] text-base leading-relaxed font-light">
+              We exist to remove the barriers between you and your audience.
+            </p>
+          </div>
         </div>
       </div>
     </section>
