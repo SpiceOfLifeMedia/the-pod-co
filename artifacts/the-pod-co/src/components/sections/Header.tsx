@@ -3,10 +3,10 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import logoClear from "@assets/podco-logo-clear.png";
 
 const NAV = [
-  { label: "Products", href: "#products", dropdown: true },
-  { label: "PODsentral", href: "#software", dropdown: false },
-  { label: "Solutions", href: "#solutions", dropdown: true },
-  { label: "Technology", href: "#technology", dropdown: false },
+  { label: "Features", href: "#software", dropdown: false },
+  { label: "Pricing", href: "#pricing", dropdown: false },
+  { label: "Education", href: "#education", dropdown: false },
+  { label: "Enterprise", href: "#education", dropdown: false },
   { label: "About", href: "#about", dropdown: false },
 ];
 

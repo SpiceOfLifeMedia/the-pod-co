@@ -10,6 +10,8 @@ import { Manifesto } from "./components/sections/Manifesto";
 import { Ecosystem } from "./components/sections/Ecosystem";
 import { Hardware } from "./components/sections/Hardware";
 import { SoftwareSection } from "./components/sections/SoftwareSection";
+import { Pricing } from "./components/sections/Pricing";
+import { EducationEnterprise } from "./components/sections/EducationEnterprise";
 import { PhilosophyCTA } from "./components/sections/PhilosophyCTA";
 import { Footer } from "./components/sections/Footer";
 
@@ -25,6 +27,8 @@ function Home() {
         <Ecosystem />
         <Hardware />
         <SoftwareSection />
+        <Pricing />
+        <EducationEnterprise />
         <PhilosophyCTA />
       </main>
       <Footer />
