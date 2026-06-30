@@ -1,5 +1,5 @@
 import { useIntersectionObserver } from "@/lib/use-intersection-observer";
-import logoClear from "@assets/podco-logo-clear.png";
+import podsentral from "@assets/podsentral-logo.png";
 
 function AppMockup() {
   const projects = [
@@ -33,9 +33,7 @@ function AppMockup() {
         {/* Sidebar */}
         <div className="w-[140px] bg-[#0D0F13] border-r border-white/5 p-3 shrink-0">
           <div className="flex items-center gap-1.5 mb-5 px-1">
-            <div className="flex items-center justify-center">
-              <img src={logoClear} alt="The POD Co." style={{ height: "14px", filter: "brightness(0) invert(1)" }} />
-            </div>
+            <img src={podsentral} alt="PODsentral" style={{ height: "18px", filter: "brightness(0) invert(1)" }} />
           </div>
           {["Dashboard", "Projects", "Recordings", "AI Enhance", "Publishing", "Calendar", "Analytics", "Settings"].map((item, i) => (
             <div
