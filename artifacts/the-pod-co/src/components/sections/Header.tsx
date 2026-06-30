@@ -19,7 +19,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 h-[60px] flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center shrink-0">
-            <img src={logoClear} alt="The POD Co." className="h-8" style={{ filter: "brightness(0) invert(1)" }} />
+            <img src={logoClear} alt="The POD Co." className="h-10" style={{ filter: "brightness(0) invert(1)" }} />
           </a>
 
           {/* Desktop nav */}

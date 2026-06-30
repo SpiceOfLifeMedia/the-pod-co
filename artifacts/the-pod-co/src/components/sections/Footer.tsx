@@ -26,7 +26,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_280px] gap-12 mb-12">
           {/* Logo + tagline */}
           <div>
-            <img src={logoClear} alt="The POD Co." className="h-8 mb-5" style={{ filter: "brightness(0) invert(1)" }} />
+            <img src={logoClear} alt="The POD Co." className="h-10 mb-5" style={{ filter: "brightness(0) invert(1)" }} />
             <p className="text-[#696E7C] text-sm leading-relaxed font-light">
               The spoken-content technology company.<br />
               Hardware, software and AI engineered<br />
@@ -92,7 +92,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-[#696E7C]">
-          <p>© 2025 The POD Co. All rights reserved.</p>
+          <p>© 2026 The POD Co. All rights reserved.</p>
           <div className="flex gap-6">
             {["Privacy", "Terms", "Cookies"].map((item) => (
               <a key={item} href="#" className="hover:text-white transition-colors">{item}</a>
