@@ -1,10 +1,11 @@
 import { useIntersectionObserver } from "@/lib/use-intersection-observer";
+import podgoImg from "@assets/podgo.png";
 
 export function Hero() {
   const [ref, isVisible] = useIntersectionObserver();
 
   return (
-    <section className="relative pt-36 pb-24 md:pt-56 md:pb-40 overflow-hidden bg-white">
+    <section className="relative pt-36 pb-0 md:pt-56 overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div
           ref={ref as any}
@@ -34,43 +35,28 @@ export function Hero() {
             </a>
           </div>
         </div>
+      </div>
 
-        <div className="mt-24 md:mt-32 relative">
-          <div className="aspect-[21/9] w-full bg-[#F7F7F9] rounded-2xl border border-[#E7E8EE] flex items-center justify-center overflow-hidden">
-            <div className="relative w-full h-full flex items-center justify-center animate-float">
-              <svg
-                width="640"
-                height="320"
-                viewBox="0 0 640 320"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="max-w-full h-auto"
-              >
-                {/* PODcart silhouette */}
-                <rect x="260" y="20" width="120" height="180" rx="14" fill="#E7E8EE" />
-                <rect x="276" y="36" width="88" height="68" rx="8" fill="#D0D2DB" />
-                <circle cx="285" cy="222" r="14" fill="#E7E8EE" />
-                <circle cx="355" cy="222" r="14" fill="#E7E8EE" />
-                {/* PODgo silhouette */}
-                <rect x="80" y="100" width="140" height="90" rx="14" fill="#E7E8EE" />
-                <circle cx="118" cy="145" r="18" fill="#D0D2DB" />
-                <circle cx="182" cy="145" r="18" fill="#D0D2DB" />
-                {/* PODgo MAX silhouette */}
-                <rect x="420" y="80" width="160" height="120" rx="16" fill="#E7E8EE" />
-                <circle cx="454" cy="125" r="15" fill="#D0D2DB" />
-                <circle cx="500" cy="125" r="15" fill="#D0D2DB" />
-                <circle cx="546" cy="125" r="15" fill="#D0D2DB" />
-                <rect x="450" y="162" width="100" height="8" rx="4" fill="#D0D2DB" />
-                {/* connecting line */}
-                <path d="M 220 145 Q 260 145 260 145" stroke="#D0D2DB" strokeWidth="2" strokeDasharray="6 4" />
-                <path d="M 380 145 Q 420 145 420 140" stroke="#D0D2DB" strokeWidth="2" strokeDasharray="6 4" />
-              </svg>
-            </div>
-          </div>
-          <p className="mt-4 text-center font-mono text-xs text-[#A0A5B2] uppercase tracking-widest">
-            PODcart · PODgo · PODgo MAX
-          </p>
+      {/* Full-width product hero — PODgo as the centrepiece */}
+      <div className="mt-20 md:mt-28 relative w-full bg-[#F7F7F9] overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 pt-16 md:pt-20 pb-0 flex items-end justify-center">
+          <img
+            src={podgoImg}
+            alt="PODgo — the portable podcast studio"
+            className="w-full max-w-2xl object-contain drop-shadow-2xl animate-float"
+            style={{ maxHeight: "560px" }}
+          />
         </div>
+        {/* Fade into next section */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+          style={{
+            background: "linear-gradient(to bottom, transparent, #F7F7F9)",
+          }}
+        />
+        <p className="relative z-10 pb-4 text-center font-mono text-xs text-[#A0A5B2] uppercase tracking-widest">
+          The PODgo
+        </p>
       </div>
     </section>
   );
