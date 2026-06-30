@@ -1,32 +1,48 @@
 import { useIntersectionObserver } from "@/lib/use-intersection-observer";
 
-const audiences = [
-  "Schools", "Universities", "Businesses", "Creators", 
-  "Government", "Training", "Corporate", "Media teams"
+const AUDIENCES = [
+  { name: "Schools", desc: "Student-ready. Classroom-proven." },
+  { name: "Universities", desc: "Research, radio, and media departments." },
+  { name: "Businesses", desc: "Internal comms, training, and podcasting." },
+  { name: "Enterprise", desc: "Large-scale voice content infrastructure." },
+  { name: "Media Teams", desc: "Professional broadcast and digital studios." },
+  { name: "Creators", desc: "Independent voice, elevated production." },
+  { name: "Government", desc: "Public communications and official record." },
+  { name: "Training", desc: "Scalable learning content at any volume." },
 ];
 
 export function Solutions() {
   const [ref, isVisible] = useIntersectionObserver();
 
   return (
-    <section id="solutions" className="py-24 md:py-32 bg-white">
+    <section id="solutions" className="py-32 md:py-48 bg-[#F7F7F9]">
       <div className="max-w-7xl mx-auto px-6">
-        <div 
+        <div
           ref={ref as any}
-          className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+          className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
         >
-          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-gray-900 mb-16 text-center">
-            Built for every organisation.
-          </h2>
+          <div className="mb-20">
+            <p className="font-mono text-xs text-[#3262DF] uppercase tracking-[0.18em] mb-6 font-medium">
+              Solutions
+            </p>
+            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-[#111118]">
+              Built for every organisation.
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {audiences.map((audience, index) => (
-              <div 
-                key={audience}
-                className="bg-gray-50 border border-gray-100 rounded-xl p-8 flex items-center justify-center text-center hover:-translate-y-1 hover:shadow-lg hover:border-gray-200 transition-all duration-300 cursor-default"
-                style={{ transitionDelay: `${index * 50}ms` }}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-[#E7E8EE]">
+            {AUDIENCES.map(({ name, desc }, i) => (
+              <div
+                key={name}
+                className="bg-[#F7F7F9] p-10 hover:bg-white transition-colors duration-300 cursor-default"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? "none" : "translateY(12px)",
+                  transition: `opacity 0.6s ease ${i * 60}ms, transform 0.6s ease ${i * 60}ms`,
+                }}
               >
-                <span className="text-lg font-medium text-gray-900">{audience}</span>
+                <h3 className="text-lg font-medium text-[#111118] mb-2">{name}</h3>
+                <p className="text-sm text-[#A0A5B2] font-light leading-snug">{desc}</p>
               </div>
             ))}
           </div>

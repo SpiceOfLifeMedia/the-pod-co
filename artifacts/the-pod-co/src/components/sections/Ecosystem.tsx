@@ -1,98 +1,128 @@
 import { useIntersectionObserver } from "@/lib/use-intersection-observer";
-import { ArrowRight } from "lucide-react";
+
+const NODES = [
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M14 3L25 8.5V19.5L14 25L3 19.5V8.5L14 3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ),
+    label: "Hardware",
+    desc: "Purpose-built.\nPowerful. Portable.",
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="3" y="5" width="22" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 23h10M14 19v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+    label: "Software",
+    desc: "PODsentral.\nEverything in one place.",
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M14 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0" fill="currentColor" opacity="0.6"/>
+        <path d="M8 14c0-3.31 2.69-6 6-6s6 2.69 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M4 14c0-5.52 4.48-10 10-10s10 4.48 10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+    label: "Connectivity",
+    desc: "PODlink.\nAlways connected.",
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M14 3v22M3 14h22M5.5 5.5l17 17M22.5 5.5l-17 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+    label: "Artificial Intelligence",
+    desc: "enhancing every\npart of the workflow.",
+  },
+];
 
 export function Ecosystem() {
   const [ref, isVisible] = useIntersectionObserver();
 
   return (
-    <section id="products" className="py-24 md:py-32 bg-white border-y border-gray-100">
+    <section id="technology" className="bg-[#0D0F13] py-20 md:py-28 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
-        <div 
+        <div
           ref={ref as any}
-          className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+          className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
         >
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-gray-900 mb-6">
-              A connected workflow
-            </h2>
-            <p className="text-lg text-gray-600">
-              The only complete ecosystem where purpose-built hardware meets cloud-native software.
-            </p>
-          </div>
+          {/* Section label */}
+          <p className="font-mono text-[10px] text-[#3262DF] uppercase tracking-[0.22em] font-semibold mb-12 md:mb-16">
+            The POD Co. Ecosystem
+          </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 relative">
-            
-            {/* Stage 1 */}
-            <div className="w-full md:w-1/4 flex flex-col items-center p-8 bg-gray-50 rounded-xl border border-gray-100 hover:-translate-y-1 transition-transform duration-300">
-              <span className="font-mono text-xs text-primary mb-4 uppercase tracking-wider font-semibold">Step 01</span>
-              <h3 className="text-xl font-medium text-gray-900 mb-2">Hardware</h3>
-              <p className="text-sm text-gray-500 text-center mb-6">Capture flawless audio</p>
-              <div className="font-mono text-xs text-gray-600 space-y-2 text-center bg-white w-full py-4 rounded-md border border-gray-100">
-                <div>PODgo</div>
-                <div className="text-gray-300">•</div>
-                <div>PODgo MAX</div>
-                <div className="text-gray-300">•</div>
-                <div>PODcart</div>
+          {/* Horizontal flow */}
+          <div className="flex items-start">
+            {NODES.map((node, i) => (
+              <div key={node.label} className="flex items-start flex-1">
+                {/* Node */}
+                <div className="flex flex-col items-center flex-1">
+                  {/* Icon + connecting lines row */}
+                  <div className="flex items-center w-full mb-6">
+                    {/* Left line */}
+                    {i > 0 && (
+                      <div
+                        className="flex-1 flex items-center"
+                        style={{
+                          opacity: isVisible ? 1 : 0,
+                          transition: `opacity 0.6s ease ${i * 200}ms`,
+                        }}
+                      >
+                        <div className="flex-1 h-px bg-[#3262DF]/40" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#3262DF] mx-1 shrink-0" />
+                        <div className="flex-1 h-px bg-[#3262DF]/40" />
+                      </div>
+                    )}
+                    {/* Icon box */}
+                    <div
+                      className="w-14 h-14 md:w-16 md:h-16 rounded-lg border border-white/10 bg-white/4 flex items-center justify-center text-[#A0A5B2] shrink-0"
+                      style={{
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? "none" : "scale(0.85)",
+                        transition: `opacity 0.6s ease ${i * 150}ms, transform 0.6s ease ${i * 150}ms`,
+                      }}
+                    >
+                      {node.icon}
+                    </div>
+                    {/* Right line */}
+                    {i < NODES.length - 1 && (
+                      <div
+                        className="flex-1 flex items-center"
+                        style={{
+                          opacity: isVisible ? 1 : 0,
+                          transition: `opacity 0.6s ease ${i * 200 + 100}ms`,
+                        }}
+                      >
+                        <div className="flex-1 h-px bg-[#3262DF]/40" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#3262DF] mx-1 shrink-0" />
+                        <div className="flex-1 h-px bg-[#3262DF]/40" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Label + desc */}
+                  <div
+                    className="text-center px-2"
+                    style={{
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible ? "none" : "translateY(8px)",
+                      transition: `opacity 0.7s ease ${i * 150 + 200}ms, transform 0.7s ease ${i * 150 + 200}ms`,
+                    }}
+                  >
+                    <p className="text-white font-medium text-sm mb-1.5">{node.label}</p>
+                    <p className="text-[#696E7C] text-xs leading-relaxed whitespace-pre-line font-light">
+                      {node.desc}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div className="hidden md:flex flex-col items-center px-2">
-              <span className="font-mono text-[10px] text-gray-400 mb-2 uppercase tracking-widest whitespace-nowrap">Auto-sync</span>
-              <ArrowRight className="text-gray-300 w-6 h-6" />
-            </div>
-            
-            <div className="md:hidden flex flex-col items-center py-2">
-              <ArrowRight className="text-gray-300 w-6 h-6 rotate-90" />
-            </div>
-
-            {/* Stage 2 */}
-            <div className="w-full md:w-1/4 flex flex-col items-center p-8 bg-gray-50 rounded-xl border border-gray-100 hover:-translate-y-1 transition-transform duration-300">
-              <span className="font-mono text-xs text-primary mb-4 uppercase tracking-wider font-semibold">Step 02</span>
-              <h3 className="text-xl font-medium text-gray-900 mb-2">Software</h3>
-              <p className="text-sm text-gray-500 text-center mb-6">Record & review</p>
-              <div className="font-mono text-xs text-gray-600 text-center bg-white w-full py-4 rounded-md border border-gray-100 flex items-center justify-center h-[98px]">
-                PODsentral
-              </div>
-            </div>
-
-            <div className="hidden md:flex flex-col items-center px-2">
-              <span className="font-mono text-[10px] text-gray-400 mb-2 uppercase tracking-widest whitespace-nowrap">Cloud transfer</span>
-              <ArrowRight className="text-gray-300 w-6 h-6" />
-            </div>
-
-            <div className="md:hidden flex flex-col items-center py-2">
-              <ArrowRight className="text-gray-300 w-6 h-6 rotate-90" />
-            </div>
-
-            {/* Stage 3 */}
-            <div className="w-full md:w-1/4 flex flex-col items-center p-8 bg-gray-50 rounded-xl border border-gray-100 hover:-translate-y-1 transition-transform duration-300">
-              <span className="font-mono text-xs text-primary mb-4 uppercase tracking-wider font-semibold">Step 03</span>
-              <h3 className="text-xl font-medium text-gray-900 mb-2">Connectivity</h3>
-              <p className="text-sm text-gray-500 text-center mb-6">Share with teams</p>
-              <div className="font-mono text-xs text-gray-600 text-center bg-white w-full py-4 rounded-md border border-gray-100 flex items-center justify-center h-[98px]">
-                Drive / AWS / Direct
-              </div>
-            </div>
-
-            <div className="hidden md:flex flex-col items-center px-2">
-              <span className="font-mono text-[10px] text-gray-400 mb-2 uppercase tracking-widest whitespace-nowrap">Process</span>
-              <ArrowRight className="text-gray-300 w-6 h-6" />
-            </div>
-
-            <div className="md:hidden flex flex-col items-center py-2">
-              <ArrowRight className="text-gray-300 w-6 h-6 rotate-90" />
-            </div>
-
-            {/* Stage 4 */}
-            <div className="w-full md:w-1/4 flex flex-col items-center p-8 bg-primary/5 rounded-xl border border-primary/20 hover:-translate-y-1 transition-transform duration-300">
-              <span className="font-mono text-xs text-primary mb-4 uppercase tracking-wider font-semibold">Step 04</span>
-              <h3 className="text-xl font-medium text-gray-900 mb-2">AI Production</h3>
-              <p className="text-sm text-gray-600 text-center mb-6">Enhance & publish</p>
-              <div className="font-mono text-xs text-primary text-center bg-white w-full py-4 rounded-md border border-primary/10 flex items-center justify-center h-[98px]">
-                Smart Drafts
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
       </div>

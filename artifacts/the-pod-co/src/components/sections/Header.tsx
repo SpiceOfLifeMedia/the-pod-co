@@ -1,34 +1,82 @@
-import { Link } from "wouter";
-import logoColor from "@assets/podco-logo-color.png";
+import { useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import logoClear from "@assets/podco-logo-clear.png";
+
+const NAV = [
+  { label: "Products", href: "#products", dropdown: true },
+  { label: "PODsentral", href: "#software", dropdown: false },
+  { label: "Solutions", href: "#solutions", dropdown: true },
+  { label: "Technology", href: "#technology", dropdown: false },
+  { label: "About", href: "#about", dropdown: false },
+];
 
 export function Header() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <img 
-            src={logoColor}
-            alt="The POD Co." 
-            className="h-8"
-          />
-        </Link>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D0F13]">
+        <div className="max-w-7xl mx-auto px-6 h-[60px] flex items-center justify-between">
+          {/* Logo */}
+          <a href="/" className="flex items-center shrink-0">
+            <img src={logoClear} alt="The POD Co." className="h-8" style={{ filter: "brightness(0) invert(1)" }} />
+          </a>
 
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#products" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Products</a>
-          <a href="#solutions" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Solutions</a>
-          <a href="#about" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">About</a>
-          <a href="#contact" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
-        </nav>
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-7">
+            {NAV.map(({ label, href, dropdown }) => (
+              <a
+                key={label}
+                href={href}
+                className="flex items-center gap-0.5 text-sm text-[#A0A5B2] hover:text-white transition-colors"
+              >
+                {label}
+                {dropdown && <ChevronDown className="w-3.5 h-3.5 opacity-60" />}
+              </a>
+            ))}
+          </nav>
 
-        <div className="flex items-center gap-4">
-          <button className="hidden md:inline-flex text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
-            Log in
-          </button>
-          <button className="bg-primary text-primary-foreground px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-primary/90 transition-colors">
-            Book a Demo
-          </button>
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="hidden md:inline-flex bg-[#3262DF] text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#284FC4] transition-colors"
+            >
+              Book a demo
+            </a>
+            <button
+              className="md:hidden p-1.5 text-[#A0A5B2]"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Mobile drawer */}
+      {open && (
+        <div className="fixed inset-0 z-40 bg-[#0D0F13] pt-[60px] px-6" onClick={() => setOpen(false)}>
+          <nav className="flex flex-col gap-1 pt-6">
+            {NAV.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="text-xl font-medium text-white py-3 border-b border-white/5"
+                onClick={() => setOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="mt-6 bg-[#3262DF] text-white px-6 py-4 rounded-md text-base font-semibold text-center"
+              onClick={() => setOpen(false)}
+            >
+              Book a demo
+            </a>
+          </nav>
+        </div>
+      )}
+    </>
   );
 }

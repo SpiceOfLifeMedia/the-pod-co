@@ -1,92 +1,91 @@
 import { useIntersectionObserver } from "@/lib/use-intersection-observer";
+import podgoImg from "@assets/podgo.png";
+import podgoMaxImg from "@assets/podgo-max.png";
+import podcartImg from "@assets/podcart.png";
 
-const products = [
+const PRODUCTS = [
   {
     name: "PODgo",
-    tagline: "The portable studio",
-    specs: ["2 Mics", "USB-C", "Battery-powered"],
-    illustration: (
-      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-white/5">
-        <rect x="75" y="100" width="150" height="100" rx="16" fill="currentColor" stroke="rgba(255,255,255,0.1)" strokeWidth="2"/>
-        <circle cx="110" cy="150" r="20" fill="rgba(255,255,255,0.1)"/>
-        <circle cx="190" cy="150" r="20" fill="rgba(255,255,255,0.1)"/>
-      </svg>
-    )
+    desc: "Portable spoken-content studio.",
+    img: podgoImg,
+    alt: "PODgo",
   },
   {
     name: "PODgo MAX",
-    tagline: "Uncompromising capability",
-    specs: ["4 Mics", "XLR Inputs", "Phantom Power"],
-    illustration: (
-      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-white/5">
-        <rect x="60" y="80" width="180" height="140" rx="20" fill="currentColor" stroke="rgba(255,255,255,0.1)" strokeWidth="2"/>
-        <circle cx="95" cy="120" r="16" fill="rgba(255,255,255,0.1)"/>
-        <circle cx="150" cy="120" r="16" fill="rgba(255,255,255,0.1)"/>
-        <circle cx="205" cy="120" r="16" fill="rgba(255,255,255,0.1)"/>
-        <rect x="95" y="170" width="110" height="10" rx="5" fill="rgba(255,255,255,0.1)"/>
-      </svg>
-    )
+    desc: "Premium mobile production.",
+    img: podgoMaxImg,
+    alt: "PODgo MAX",
   },
   {
     name: "PODcart",
-    tagline: "The mobile media room",
-    specs: ["Integrated Display", "Acoustic Shielding", "Wheeled Chassis"],
-    illustration: (
-      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-white/5">
-        <rect x="80" y="40" width="140" height="220" rx="12" fill="currentColor" stroke="rgba(255,255,255,0.1)" strokeWidth="2"/>
-        <rect x="100" y="60" width="100" height="80" rx="8" fill="rgba(255,255,255,0.1)"/>
-        <circle cx="100" cy="250" r="15" fill="rgba(255,255,255,0.1)"/>
-        <circle cx="200" cy="250" r="15" fill="rgba(255,255,255,0.1)"/>
-        <path d="M 60 160 L 240 160" stroke="rgba(255,255,255,0.1)" strokeWidth="4" strokeLinecap="round"/>
-      </svg>
-    )
-  }
+    desc: "Permanent production workstation.",
+    img: podcartImg,
+    alt: "PODcart",
+  },
 ];
 
 export function Hardware() {
   const [ref, isVisible] = useIntersectionObserver();
 
   return (
-    <section className="py-24 md:py-32 bg-gray-50">
+    <section id="products" className="bg-[#0D0F13] py-10 md:py-14 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
-        <div 
-          ref={ref as any}
-          className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        >
-          <div className="mb-16">
-            <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-gray-900">
-              Purpose-built hardware.
-            </h2>
-          </div>
+        {/* Section header */}
+        <div className="flex items-center justify-between mb-6">
+          <p className="font-mono text-[10px] text-[#3262DF] uppercase tracking-[0.22em] font-semibold">
+            Our Hardware
+          </p>
+          <a href="#" className="text-sm text-[#A0A5B2] hover:text-white transition-colors flex items-center gap-1.5">
+            View all products
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {products.map((product, index) => (
-              <div 
-                key={product.name}
-                className="group flex flex-col bg-[#0A0C10] rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-black/20"
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <div className="h-[300px] w-full flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#11141A] to-[#0A0C10]">
-                  <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
-                    {product.illustration}
-                  </div>
-                </div>
-                
-                <div className="p-8 border-t border-white/5">
-                  <h3 className="text-2xl font-medium text-white mb-2">{product.name}</h3>
-                  <p className="text-gray-400 mb-6">{product.tagline}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {product.specs.map(spec => (
-                      <span key={spec} className="font-mono text-xs px-3 py-1 bg-white/5 text-gray-300 rounded-full border border-white/10">
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+        {/* Three product cards */}
+        <div
+          ref={ref as any}
+          className={`fade-in-section ${isVisible ? "is-visible" : ""} grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5`}
+        >
+          {PRODUCTS.map((p, i) => (
+            <div
+              key={p.name}
+              className="bg-[#111318] p-8 flex flex-col group hover:bg-[#15181F] transition-colors duration-300 relative overflow-hidden"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "none" : "translateY(12px)",
+                transition: `opacity 0.6s ease ${i * 120}ms, transform 0.6s ease ${i * 120}ms`,
+              }}
+            >
+              <div className="mb-6">
+                <h3 className="text-white text-lg font-semibold mb-1.5">{p.name}</h3>
+                <p className="text-[#696E7C] text-sm leading-snug font-light">{p.desc}</p>
               </div>
-            ))}
-          </div>
+
+              <a
+                href="#"
+                className="inline-flex items-center gap-1.5 text-sm text-[#A0A5B2] hover:text-white transition-colors mb-8"
+              >
+                Learn more
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+
+              <div className="flex-1 flex items-end justify-center min-h-[200px]">
+                <img
+                  src={p.img}
+                  alt={p.alt}
+                  className="w-full max-w-[260px] object-contain transition-transform duration-700 group-hover:scale-105"
+                  style={{
+                    filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))",
+                    maxHeight: "200px",
+                  }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

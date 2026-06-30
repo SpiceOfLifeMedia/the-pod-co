@@ -6,11 +6,10 @@ import NotFound from "@/pages/not-found";
 
 import { Header } from "./components/sections/Header";
 import { Hero } from "./components/sections/Hero";
-import { WhyWeExist } from "./components/sections/WhyWeExist";
+import { Manifesto } from "./components/sections/Manifesto";
 import { Ecosystem } from "./components/sections/Ecosystem";
 import { Hardware } from "./components/sections/Hardware";
-import { IndustrialDesign } from "./components/sections/IndustrialDesign";
-import { Solutions } from "./components/sections/Solutions";
+import { SoftwareSection } from "./components/sections/SoftwareSection";
 import { PhilosophyCTA } from "./components/sections/PhilosophyCTA";
 import { Footer } from "./components/sections/Footer";
 
@@ -18,15 +17,14 @@ const queryClient = new QueryClient();
 
 function Home() {
   return (
-    <div className="min-h-[100dvh] bg-white selection:bg-primary/20 selection:text-primary font-sans text-foreground">
+    <div className="min-h-[100dvh] bg-[#0D0F13] font-sans text-foreground overflow-x-hidden">
       <Header />
       <main>
         <Hero />
-        <WhyWeExist />
+        <Manifesto />
         <Ecosystem />
         <Hardware />
-        <IndustrialDesign />
-        <Solutions />
+        <SoftwareSection />
         <PhilosophyCTA />
       </main>
       <Footer />
