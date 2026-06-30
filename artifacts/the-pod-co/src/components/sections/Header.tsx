@@ -10,6 +10,8 @@ const NAV = [
   { label: "About", href: "#about", dropdown: false },
 ];
 
+const APP_URL = "https://podsentral.vercel.app";
+
 export function Header() {
   const [open, setOpen] = useState(false);
 
@@ -19,7 +21,12 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 h-[60px] flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center shrink-0">
-            <img src={logoClear} alt="The POD Co." className="h-10" style={{ filter: "brightness(0) invert(1)" }} />
+            <img
+              src={logoClear}
+              alt="The POD Co."
+              className="h-10"
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
           </a>
 
           {/* Desktop nav */}
@@ -36,12 +43,19 @@ export function Header() {
             ))}
           </nav>
 
+          {/* CTA buttons */}
           <div className="flex items-center gap-3">
             <a
-              href="#contact"
+              href={`${APP_URL}/sign-in`}
+              className="hidden md:inline-flex items-center text-sm text-[#A0A5B2] hover:text-white transition-colors font-medium px-3 py-2"
+            >
+              Log In
+            </a>
+            <a
+              href={`${APP_URL}/sign-up`}
               className="hidden md:inline-flex bg-[#3262DF] text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-[#284FC4] transition-colors"
             >
-              Book a demo
+              Get Started
             </a>
             <button
               className="md:hidden p-1.5 text-[#A0A5B2]"
@@ -55,7 +69,10 @@ export function Header() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="fixed inset-0 z-40 bg-[#0D0F13] pt-[60px] px-6" onClick={() => setOpen(false)}>
+        <div
+          className="fixed inset-0 z-40 bg-[#0D0F13] pt-[60px] px-6"
+          onClick={() => setOpen(false)}
+        >
           <nav className="flex flex-col gap-1 pt-6">
             {NAV.map(({ label, href }) => (
               <a
@@ -68,11 +85,18 @@ export function Header() {
               </a>
             ))}
             <a
-              href="#contact"
-              className="mt-6 bg-[#3262DF] text-white px-6 py-4 rounded-md text-base font-semibold text-center"
+              href={`${APP_URL}/sign-in`}
+              className="mt-6 text-[#A0A5B2] py-3 text-base font-medium text-center"
               onClick={() => setOpen(false)}
             >
-              Book a demo
+              Log In
+            </a>
+            <a
+              href={`${APP_URL}/sign-up`}
+              className="mt-2 bg-[#3262DF] text-white px-6 py-4 rounded-md text-base font-semibold text-center"
+              onClick={() => setOpen(false)}
+            >
+              Get Started
             </a>
           </nav>
         </div>
