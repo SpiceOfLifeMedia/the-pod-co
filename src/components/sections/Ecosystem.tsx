@@ -1,34 +1,35 @@
 import { useIntersectionObserver } from "@/lib/use-intersection-observer";
-import { ArrowRight } from "lucide-react";
 
-const STAGES = [
+const LAYERS = [
   {
-    step: "01",
-    layer: "Hardware",
-    tagline: "Capture flawless audio",
+    name: "The POD Co.",
+    sublabel: "The ecosystem",
+    items: null,
+    accent: true,
+  },
+  {
+    name: "Hardware",
+    sublabel: "Capture",
     items: ["PODgo", "PODgo MAX", "PODcart"],
     accent: false,
   },
   {
-    step: "02",
-    layer: "Software",
-    tagline: "Record and review",
+    name: "Software",
+    sublabel: "Produce",
     items: ["PODsentral"],
     accent: false,
   },
   {
-    step: "03",
-    layer: "Connectivity",
-    tagline: "Sync across your team",
+    name: "Connectivity",
+    sublabel: "Sync",
     items: ["PODlink"],
     accent: false,
   },
   {
-    step: "04",
-    layer: "AI Production",
-    tagline: "Enhance and publish",
+    name: "Artificial Intelligence",
+    sublabel: "Enhance & Publish",
     items: ["Record", "Enhance", "Publish", "Transcribe"],
-    accent: true,
+    accent: false,
   },
 ];
 
@@ -36,13 +37,14 @@ export function Ecosystem() {
   const [ref, isVisible] = useIntersectionObserver();
 
   return (
-    <section id="technology" className="py-28 md:py-40 bg-white border-y border-[#E7E8EE]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="technology" className="py-32 md:py-48 bg-white border-t border-[#E7E8EE]">
+      <div className="max-w-4xl mx-auto px-6">
         <div
           ref={ref as any}
           className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
         >
-          <div className="max-w-2xl mb-20">
+          {/* Header */}
+          <div className="mb-20 md:mb-28">
             <p className="font-mono text-xs text-[#3262DF] uppercase tracking-[0.18em] mb-6 font-medium">
               One connected ecosystem
             </p>
@@ -51,51 +53,66 @@ export function Ecosystem() {
             </h2>
           </div>
 
-          <div className="flex flex-col md:flex-row items-stretch justify-between gap-4 relative">
-            {STAGES.map((stage, i) => (
-              <>
+          {/* Vertical flow */}
+          <div className="relative">
+            {LAYERS.map((layer, i) => (
+              <div key={layer.name}>
+                {/* Layer row */}
                 <div
-                  key={stage.step}
-                  className={`w-full md:w-1/4 flex flex-col p-8 rounded-xl border transition-transform duration-300 hover:-translate-y-1 ${
-                    stage.accent
-                      ? "bg-[#E7F2FF] border-[#3262DF]/20"
-                      : "bg-[#F7F7F9] border-[#E7E8EE]"
-                  }`}
+                  className="flex items-start gap-8"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? "none" : "translateY(16px)",
+                    transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 130}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 130}ms`,
+                  }}
                 >
-                  <span className="font-mono text-xs text-[#3262DF] mb-4 uppercase tracking-wider font-semibold">
-                    Step {stage.step}
-                  </span>
-                  <h3 className="text-xl font-medium text-[#111118] mb-1">{stage.layer}</h3>
-                  <p className="text-sm text-[#A0A5B2] mb-6">{stage.tagline}</p>
-                  <div
-                    className={`font-mono text-xs space-y-2 py-4 px-4 rounded-lg border ${
-                      stage.accent
-                        ? "bg-white border-[#3262DF]/10 text-[#3262DF]"
-                        : "bg-white border-[#E7E8EE] text-[#696E7C]"
-                    }`}
-                  >
-                    {stage.items.map((item, idx) => (
-                      <div key={item}>
-                        <div>{item}</div>
-                        {idx < stage.items.length - 1 && (
-                          <div className="text-[#E7E8EE] my-1.5">·</div>
-                        )}
+                  {/* Left: step indicator */}
+                  <div className="flex flex-col items-center shrink-0 pt-1">
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-mono font-semibold shrink-0"
+                      style={{
+                        background: layer.accent ? "#3262DF" : "#F7F7F9",
+                        color: layer.accent ? "#fff" : "#3262DF",
+                        border: layer.accent ? "none" : "1px solid #E7E8EE",
+                      }}
+                    >
+                      {layer.accent ? "◻" : String(i).padStart(2, "0")}
+                    </div>
+                  </div>
+
+                  {/* Right: content */}
+                  <div className="flex-1 pb-0">
+                    <div className="flex items-baseline gap-3 mb-1">
+                      <h3 className="text-xl md:text-2xl font-medium text-[#111118]">{layer.name}</h3>
+                      <span className="font-mono text-xs text-[#A0A5B2] uppercase tracking-wider">{layer.sublabel}</span>
+                    </div>
+                    {layer.items && (
+                      <div className="flex flex-wrap gap-2 mt-3 mb-2">
+                        {layer.items.map((item) => (
+                          <span
+                            key={item}
+                            className="font-mono text-xs px-3 py-1.5 rounded-full bg-[#F7F7F9] text-[#696E7C] border border-[#E7E8EE]"
+                          >
+                            {item}
+                          </span>
+                        ))}
                       </div>
-                    ))}
+                    )}
                   </div>
                 </div>
 
-                {i < STAGES.length - 1 && (
-                  <div key={`arrow-${i}`} className="hidden md:flex flex-col items-center justify-center px-1 shrink-0">
-                    <ArrowRight className="text-[#E7E8EE] w-5 h-5" />
-                  </div>
+                {/* Connector line between layers */}
+                {i < LAYERS.length - 1 && (
+                  <div
+                    className="ml-4 w-px bg-[#E7E8EE]"
+                    style={{
+                      height: "52px",
+                      opacity: isVisible ? 1 : 0,
+                      transition: `opacity 0.5s ease ${i * 130 + 300}ms`,
+                    }}
+                  />
                 )}
-                {i < STAGES.length - 1 && (
-                  <div key={`arrow-m-${i}`} className="md:hidden flex items-center justify-center py-2">
-                    <ArrowRight className="text-[#E7E8EE] w-5 h-5 rotate-90" />
-                  </div>
-                )}
-              </>
+              </div>
             ))}
           </div>
         </div>
