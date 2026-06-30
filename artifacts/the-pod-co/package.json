@@ -1,5 +1,5 @@
 {
-  "name": "the-pod-co",
+  "name": "@workspace/the-pod-co",
   "version": "0.0.0",
   "private": true,
   "type": "module",
