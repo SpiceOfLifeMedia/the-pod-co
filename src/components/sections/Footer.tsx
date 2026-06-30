@@ -1,3 +1,5 @@
+import logoWhite from "@assets/podco-logo-white.png";
+
 const COLS = [
   {
     heading: "Products",
@@ -24,17 +26,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_280px] gap-12 mb-12">
           {/* Logo + tagline */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 border border-white/30 rounded-sm flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <rect x="2" y="2" width="4" height="4" fill="white" opacity="0.8"/>
-                  <rect x="8" y="2" width="4" height="4" fill="white" opacity="0.8"/>
-                  <rect x="2" y="8" width="4" height="4" fill="white" opacity="0.8"/>
-                  <rect x="8" y="8" width="4" height="4" fill="white" opacity="0.3"/>
-                </svg>
-              </div>
-              <span className="text-white font-semibold text-sm">POD Co.</span>
-            </div>
+            <img src={logoWhite} alt="The POD Co." className="h-6 mb-5" />
             <p className="text-[#696E7C] text-sm leading-relaxed font-light">
               The spoken-content technology company.<br />
               Hardware, software and AI engineered<br />
@@ -75,22 +67,18 @@ export function Footer() {
                 </svg>
               </button>
             </div>
-            {/* Social icons */}
             <div className="flex gap-3">
-              {/* LinkedIn */}
               <a href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#696E7C] hover:text-white hover:border-white/30 transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
                   <circle cx="4" cy="4" r="2"/>
                 </svg>
               </a>
-              {/* YouTube */}
               <a href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#696E7C] hover:text-white hover:border-white/30 transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
                 </svg>
               </a>
-              {/* Instagram */}
               <a href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#696E7C] hover:text-white hover:border-white/30 transition-colors">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="2" y="2" width="20" height="20" rx="5"/>

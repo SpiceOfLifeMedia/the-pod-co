@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
-import logoColor from "@assets/podco-logo-color.png";
+import logoWhite from "@assets/podco-logo-white.png";
 
 const NAV = [
   { label: "Products", href: "#products", dropdown: true },
@@ -18,16 +18,8 @@ export function Header() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D0F13]">
         <div className="max-w-7xl mx-auto px-6 h-[60px] flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-7 h-7 border border-white/30 rounded-sm flex items-center justify-center">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <rect x="2" y="2" width="4" height="4" fill="white" opacity="0.8"/>
-                <rect x="8" y="2" width="4" height="4" fill="white" opacity="0.8"/>
-                <rect x="2" y="8" width="4" height="4" fill="white" opacity="0.8"/>
-                <rect x="8" y="8" width="4" height="4" fill="white" opacity="0.3"/>
-              </svg>
-            </div>
-            <span className="text-white font-semibold text-sm tracking-tight">POD Co.</span>
+          <a href="/" className="flex items-center shrink-0">
+            <img src={logoWhite} alt="The POD Co." className="h-6" />
           </a>
 
           {/* Desktop nav */}
