@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
-import logoWhite from "@assets/podco-logo-white.png";
+import logoTns from "@assets/podco-logo-tns.png";
 
 const NAV = [
   { label: "Products", href: "#products", dropdown: true },
@@ -19,7 +19,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 h-[60px] flex items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center shrink-0">
-            <img src={logoWhite} alt="The POD Co." className="h-6" />
+            <img src={logoTns} alt="The POD Co." className="h-6" />
           </a>
 
           {/* Desktop nav */}

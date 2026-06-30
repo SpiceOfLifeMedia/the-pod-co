@@ -1,4 +1,4 @@
-import logoWhite from "@assets/podco-logo-white.png";
+import logoTns from "@assets/podco-logo-tns.png";
 
 const COLS = [
   {
@@ -26,7 +26,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[240px_1fr_280px] gap-12 mb-12">
           {/* Logo + tagline */}
           <div>
-            <img src={logoWhite} alt="The POD Co." className="h-6 mb-5" />
+            <img src={logoTns} alt="The POD Co." className="h-6 mb-5" />
             <p className="text-[#696E7C] text-sm leading-relaxed font-light">
               The spoken-content technology company.<br />
               Hardware, software and AI engineered<br />
